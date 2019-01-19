@@ -1,8 +1,11 @@
-## @file ReadAllocationData.py
-#  @author 
-#  @brief 
-#  @date 
+﻿## @file ReadAllocationData.py
+#  @title ReadAllocationData
+#  @author Shunbo Cui
+#  @date 1/17/2019
 
+## @brief This function reads detailed information of students.
+#  @param s Name of list file
+#  @return Return the list of students
 def readStdnts(s):
     f = open('1.txt', 'r', -1, 'utf-8-sig')                  
     n = 0
@@ -24,6 +27,9 @@ def readStdnts(s):
     f.close()
     return(S)
 
+## @brief This function reads macid of students with freechoice.
+#  @param s Name of list file
+#  @return Return the list of students with free choice
 def readFreeChoice(s):
     f = open(s, 'r', -1, 'utf-8-sig')                  
 
@@ -34,6 +40,9 @@ def readFreeChoice(s):
     f.close()
     return (F)
 
+## @brief This function reads capacity of each department from the file
+#  @param s Name of list file
+#  @return Return list of departments and their capacity
 def readDeptCapacity(s):
     f = open(s, 'r', -1, 'utf-8-sig')     
     C = {}
