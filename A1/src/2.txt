@@ -1,0 +1,7 @@
+﻿civil:50
+chemical:80
+electrical:100
+mechanical:100
+software:80
+materials:90
+engphys:70

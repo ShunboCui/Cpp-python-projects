@@ -1,0 +1,5 @@
+﻿A:apples:alfa:male:7.4:electrical:software:chemical
+B:butter:bravo:female:3.7:civil:materials:chemical
+C:charlie:charlie:female:8.2:engphys:material:electrical
+D:duff:delta:male:6.7:software:civil:mechanical
+E:edward:echo:male:9.1:chemical:materials:engphys

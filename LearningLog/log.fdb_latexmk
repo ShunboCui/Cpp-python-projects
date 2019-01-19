@@ -1,0 +1,25 @@
+# Fdb version 3
+["xdvipdfmx"] 1547422101 "log.xdv" "log.pdf" "log" 1547422103
+  "log.xdv" 1547422101 9552 62f99fc8edb8c907dd5a5cc2ae560ea0 "xelatex"
+  (generated)
+  "log.pdf"
+["xelatex"] 1547422100 "log.tex" "log.xdv" "log" 1547422103
+  "f:/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1547418852 3332 103109f5612ad95229751940c61aada0 ""
+  "f:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1547418045 1524 4414a8315f39513458b80dfc63bff03a ""
+  "f:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1547418045 1512 f21f83efb36853c0b70002322c1ab3ad ""
+  "f:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm" 1547418045 1520 eccf95517727cb11801f4f1aee3a21b4 ""
+  "f:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1547418045 1288 655e228510b4c2a1abe905c368440826 ""
+  "f:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmr6.tfm" 1547418046 1300 b62933e007d01cfd073f79b963c01526 ""
+  "f:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmr8.tfm" 1547418046 1292 21c1c5bfeaebccffdb478fd231a0997d ""
+  "f:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1547418046 1124 6c73e740cf17375f03eec0ee63599741 ""
+  "f:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1547418046 1116 933a60c408fc0a863a92debe84b2d294 ""
+  "f:/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1547418046 1120 8b7d695260f3cff42e636090a8002094 ""
+  "f:/texlive/2018/texmf-dist/tex/latex/base/article.cls" 1547419344 19933 3097d1b31d3c45dc957096f554529032 ""
+  "f:/texlive/2018/texmf-dist/tex/latex/base/size10.clo" 1547419345 8294 6d6e23d5169c0d89d173f6c7e08a005a ""
+  "f:/texlive/2018/texmf-var/web2c/xetex/xelatex.fmt" 1547421780 3737574 36e189f4dd30143cd2659762d07f22f4 ""
+  "log.aux" 1547422101 8 a94a2480d3289e625eea47cd1b285758 ""
+  "log.tex" 1547419760 1054 a07284a3d2d022fbd506ca16001a3b08 ""
+  (generated)
+  "log.aux"
+  "log.log"
+  "log.xdv"
