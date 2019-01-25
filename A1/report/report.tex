@@ -16,26 +16,40 @@
 \newcounter{stepnum}
 
 \title{Assignment 1 Solution}
-\author{author name and macid}
+\author{Shunbo Cui 400141410}
 \date{\today}
 
 \begin {document}
 
 \maketitle
 
-Introductory blurb.
+In this assignment 2 modules are created. The first one ReadAllocationData.py includes 3 functions for reading data from 3 different files to get the student list, student with free choice and the department capacity list. The other module CalcModule.py includes 3 functions for calculations of the data, including the average gpa, sorting students according to gpa, and allocating the students to different departments.
 
 \section{Testing of the Original Program}
 
-Description of approach to testing.  Rationale for test case selection.  Summary
-of results.  Any problems uncovered through testing.
-
-Under testing you should list any assumptions you needed to make about the
-program's inputs or expected behaviour.
+First of all, 3 functions for comparing the lists, floats and dictionaries are created for the following test cases.\\
+The first test case is to test how sort woring on empty lists. After sorting, the empty list should still be empty. The case can be tested by comparing if the sorted list remains the same. The original program passed.\\
+The second test case for sorting is a normal process on a simple list. The list only includes macid, gender and gpa of the students. The function can sort the dictionaries of students according to the key 'gpa' in descending order. Then the test function compare the output list with the expected test to tell if the test passed.\\
+For the average function I made 3 test cases. The first 2 ones have the same input list. For the first case the input argument is 'male' while for the second case it is 'female'. For both cases, by comparing if the output float is similar to the expected one, we can tell if the function passes the test. Because two double numbers cannot be exactly the same so I implement this by calculating the difference between the output value and the expected value. If the difference is smaller than 0.001, the result is considered to be correct. The function passed with both male and female.\\
+The third test can tell how the average function works on the empty list. If there is no special case for empty list in the average function, there will be an error caused by dividing by zero, because the count of the students is zero. In the function there is a section which can return 0 directly if the input list is empty.\\
 
 \section{Results of Testing Partner's Code}
 
-Summary of results.
+Test passed, lists are equal for sorting empty list\\
+Test passed, lists are equal for sorting added empty list\\
+Test passed, floats are equal for calculating average gpa for male\\
+Test passed, floats are equal for calculating average gpa for female\\
+Test failed, floats are not equal for calculating average gpa for empty list\\
+Test passed, directories are equal for allocating\\
+Test passed, directories are equal for allocating empty list\\
+WARNING: Capacity below 0 for civil\\
+Test failed, directories are not equal for allocating (all freechoice)\\
+Test failed, directories are not equal for allocating (first choice full)\\
+ERROR: Could not allocate macid: F, all 3 program choices are full!\\
+ERROR: Could not allocate macid: E, all 3 program choices are full!\\
+ERROR: Could not allocate macid: D, all 3 program choices are full!\\
+Test failed, directories are not equal for allocating (capacities full)\\
+
 
 \section{Discussion of Test Results}
 
