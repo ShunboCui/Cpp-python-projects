@@ -27,11 +27,19 @@ In this assignment 2 modules are created. The first one ReadAllocationData.py in
 
 \section{Testing of the Original Program}
 
-First of all, 3 functions for comparing the lists, floats and dictionaries are created for the following test cases.\\
+\begin{enumerate}[(a)]
+
+\item First of all, 3 functions for comparing the lists, floats and dictionaries are created for the following test cases.\\
 The first test case is to test how sort woring on empty lists. After sorting, the empty list should still be empty. The case can be tested by comparing if the sorted list remains the same. The original program passed.\\
 The second test case for sorting is a normal process on a simple list. The list only includes macid, gender and gpa of the students. The function can sort the dictionaries of students according to the key 'gpa' in descending order. Then the test function compare the output list with the expected test to tell if the test passed.\\
-For the average function I made 3 test cases. The first 2 ones have the same input list. For the first case the input argument is 'male' while for the second case it is 'female'. For both cases, by comparing if the output float is similar to the expected one, we can tell if the function passes the test. Because two double numbers cannot be exactly the same so I implement this by calculating the difference between the output value and the expected value. If the difference is smaller than 0.001, the result is considered to be correct. The function passed with both male and female.\\
+\item For the average function I made 3 test cases. The first 2 ones have the same input list. For the first case the input argument is 'male' while for the second case it is 'female'. For both cases, by comparing if the output float is similar to the expected one, we can tell if the function passes the test. Because two double numbers cannot be exactly the same so I implement this by calculating the difference between the output value and the expected value. If the difference is smaller than 0.001, the result is considered to be correct. The function passed with both male and female.\\
 The third test can tell how the average function works on the empty list. If there is no special case for empty list in the average function, there will be an error caused by dividing by zero, because the count of the students is zero. In the function there is a section which can return 0 directly if the input list is empty.\\
+\item The first test case for the allocate function is testing a normal input list. There is no student with free choice in this case so everyone is sorted by gpa and allocated. In the next case the input list is empty. The output is still an empty list as expected.\\
+In the third test case all students in the list have free choice. I did not set the rule for allocating such students so the order in the output depends on the order in the input list.\\
+The purpose of the 4th test case is to test how the function will allocate the students when their first choice department is full. I set the capacity of civil department to 3 and filled it with 3 students with free choice. Then the other students are sorted and allocated to their second choice.\\
+In the 5th case, the civil department is full and all other department capacities are set to 0. That means some students are not able to be allocated to any of their choices, and an error message should be printed. As expected the macid of the students who are not allocated were printed out.\\
+
+\end{enumerate}
 
 \section{Results of Testing Partner's Code}
 
@@ -54,22 +62,34 @@ Test failed, directories are not equal for allocating (capacities full)\\
 \section{Discussion of Test Results}
 
 \subsection{Problems with Original Code}
-
+Order of allocating: in the instructions students with free choice are not sorted with gpa so in the allocated list they are not in order of gpa. If I compare the output with the expected list, it will not pass the test because of the order. So I can put a sort function inside of the test driver and sort the allocated list again. After that I can comare it with the expected one.
 \subsection{Problems with Partner's Code}
-
+The partner's file does not pass the third test on the average function. In the function when the length of the list is equal or smaller than 0, the function will return -1, which is not 0. However in my test case, the expected output is 0 which is not -1 so an error message is showed.\\
+The allocate function passed the first 2 test cases, and failed in the last 3 ones. In the 3rd test, there are 6 students with the same first choice and I set the capacity to 5, which means 1 student with free choice will not be allocated to his first choice. The partner announced that the function will not consider this condition, which can make the students in the department will exceed the capacity. In some special conditions, when many students with free choice choose the same department as their 1st choice, the capacity will be overflow. However this is not going to really happen since the capacity will not be that small.\\
+For the 4th and 5th test of the allocate function, the 3 students without free choice are allocated to their 2nd choice because the 1st choice is full, which is the same as expected. However in the test case, the department is filled with students with free choice. In the test case students with free choice are not expected to be allocated according to their gpa. The order of those students in allocated list is expected to be the same as the input list. However in the function, all students including those with free choice are allocated according to the gpa. The order of students with free choice made the result different from expected.
 \section{Critique of Design Specification}
-
+I think there are not enough rules and Specifications about how the functions should work. For example when allocating the students, if the capacity is full, should the students with free choice be allocated to their second choice? Such problem make the requirement kind of ambiguous, but it also encourage us to make these conditions clear by ourselves.
 %\newpage
 
 \section{Answers to Questions}
 
 \begin{enumerate}[(a)]
 
-\item answer
+\item The current function take the parameter g and tells if it is male or female, and calculate the gpa according to it. To make the function more general, the parameter does not need to be limited in the 2 string. It can be any other string for student information, as long as the string is in the input list. First we can put a line testing if the parameter string is a information key in the dictionary. Then use a line to set g as the rule to judge if the student should be taken into calculation. There can also be one more parameter for the key of the data be calculated. In this case it is 'gpa' but in the function it can be set to any other key. For example there is a key 'testgrade' in the student dictionary and the content is a double, the function can take a parameter 'testgrade' and calculate the average of those data.\\
+For the sort function it can also take a string parameter as the rule of sorting. According to any other keys in the dictionary with a double or integer as value, the function can sort it.
 
-\item answer
+\item There is aliasing when we have two variable names with the same value. The dictionary is mutable in Python. To pretend this, there should be no same keys in a dictioanry.
 
-\item ...
+\item I can make empty files to test if the functions can return empty lists and dictionaries. I can take off some keys and their values to test if the functions can read the rest normally. For the readStdnts I can change the data type of the numbers. There should be an error message when the data of gpa is not float. Also I can change the capacity data to string or float to test if there is any error message.\\
+I think the reason why we are not testing the ReadAllocationData.py is the functions in it are not flexible. The functions are written based on the format of the input file. If the input format is changed, the functions won't work. For example if I switch the gpa and macid in the file, the output list will be wrong. In CalcModule.py, all functions take the parameter and knows which data to calculate.
+
+\item There will not be repeating element in a set. If we want to put multiple same strings in the set, there will be only one left and all others are deleted. \\
+If the strings are used as keys in the set, the value of them will not be passed into the set. We can use a list or dictionary instead. We can also use other types instead of string.
+
+\item Tuple is simialr to list in Python. It can store data and can also be accessed. The difference is we cannot modify the element in it. So it is not as convenient as dictionary in this case. If we want more functions in the module, we can use class.
+
+\item It does not need to be modified since we can access the elements in tuple in the same way as a list.\\
+We do not need to modify the CalcModule.py when using the class. The output will remain the same.
 
 \end{enumerate}
 
