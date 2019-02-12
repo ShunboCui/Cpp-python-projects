@@ -1,7 +1,7 @@
-from StdntAllocTypes import*
-from SALst import*
-from DCapALst import*
-from SeqADT import*
+from StdntAllocTypes import *
+from SALst import *
+from DCapALst import *
+from SeqADT import *
 
 
 def load_stdnt_data(s):

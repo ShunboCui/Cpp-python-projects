@@ -2,9 +2,9 @@
 #  @author Shunbo Cui
 #  @brief SALst
 #  @date 11/2/2019
-from StdntAllocTypes import*
-from AALst import*
-from DCapALst import*
+from StdntAllocTypes import *
+from AALst import *
+from DCapALst import *
 
 
 ## @An abstract data type that do operations to the data
