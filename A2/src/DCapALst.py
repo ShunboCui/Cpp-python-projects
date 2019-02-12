@@ -1,11 +1,20 @@
+## @file DCapALst.py
+#  @author Shunbo Cui
+#  @brief DCapALst
+#  @date 11/2/2019
+
+
+## @An abstract data type that represents Department capacity type
 class DCapALst:
 
     s = []
 
+    ## @brief constructor of the data type
     @staticmethod
     def init():
         DCapALst.s = []
 
+    ## @brief appending elements to the departments list
     @staticmethod
     def add(d, n):
         tup = (d, n)
@@ -14,6 +23,7 @@ class DCapALst:
                 raise KeyError("tuple already in set")
         DCapALst.s.append(tup)
 
+    ## @brief deleting elements in the departments list
     @staticmethod
     def remove(d):
         for tup1 in DCapALst.s:
@@ -24,6 +34,8 @@ class DCapALst:
             if d in tup1:
                 DCapALst.s.remove(tup1)
 
+    ## @brief check if element in the list
+    #  @return the boolean value representing if exists
     @staticmethod
     def elm(d):
         for tup1 in DCapALst.s:
@@ -31,6 +43,8 @@ class DCapALst:
                 return True
         return False
 
+    ## @brief check the capacity of the department
+    #  @return the interger of the capacity
     @staticmethod
     def capacity(d):
         for tup1 in DCapALst.s:
@@ -39,6 +53,8 @@ class DCapALst:
         raise KeyError("tuple not in set")
 
 
+## @brief defining the exception
+#  @return the value of the string
 class KeyError(Exception):
     def __init__(self, value):
         self.value = value
