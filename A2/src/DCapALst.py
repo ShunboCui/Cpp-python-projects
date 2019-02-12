@@ -1,10 +1,10 @@
 class DCapALst:
 
-    s = set()
+    s = []
 
     @staticmethod
     def init():
-        DCapALst.s = set()
+        DCapALst.s = []
 
     @staticmethod
     def add(d, n):
@@ -12,13 +12,13 @@ class DCapALst:
         for tup1 in DCapALst.s:
             if d in tup1:
                 raise KeyError("tuple already in set")
-        DCapALst.s = DCapALst.s.add(tup)
+        DCapALst.s.append(tup)
 
     @staticmethod
     def remove(d):
         for tup1 in DCapALst.s:
-            if d in tup1:
-                break
+            if d not in tup1:
+                continue
             raise KeyError("tuple not in set")
         for tup1 in DCapALst.s:
             if d in tup1:
@@ -34,6 +34,14 @@ class DCapALst:
     @staticmethod
     def capacity(d):
         for tup1 in DCapALst.s:
-            if d in tup1:
+            if d == tup1[0]:
                 return tup1[1]
         raise KeyError("tuple not in set")
+
+
+class KeyError(Exception):
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        return str(self.value)
