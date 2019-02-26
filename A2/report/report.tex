@@ -27,18 +27,15 @@ Introductory blurb.
 
 \section{Testing of the Original Program}
 
-Description of approach to testing.  Rationale for test case selection.  Summary
-of results.  Any problems uncovered through testing.
+The several test cases are implemented on the add, remove and sorting functions in SALst section and they passed. However when I test the allocating function there are some problems. There is always only 1 student can be allocated in the department. The reason for the problem is that there are problem in the AALst module. Originally I used one new tuple for each of the student in the AAlst, containing their macid and choice. So there will be many tuples for the same department in the list. However the expected result is that for every department there is just 1 tuple containing the name of department and macid of students in it. That's why when testing the allocating function, as soon as it find the tuple containing the name of the department, it will return the single macid in the tuple. I have fixed this problem and put the code in a new file called AALst\_new.py. This took me long time to fix and the test case is not completed.
 
 \section{Results of Testing Partner's Code}
 
-Consequences of running partner's code.  Success, or lack of success, running
-test cases.  Explanation of why it worked, or didn't.
+The test cases are not completed. The Partner's file passes existing cases.
 
 \section{Critique of Given Design Specification}
 
-Advantages and disadvantages of the given design specification.
-
+There is no natural language in the specification so it's hard to try to figure out what each function does when building them.
 \section{Answers}
 
 \begin{enumerate}
@@ -92,6 +89,18 @@ Advantages and disadvantages of the given design specification.
 \section{Code for Read.py}
 
 \noindent \lstinputlisting{../src/Read.py}
+
+\newpage
+
+\section{Code for test\_All.py}
+
+\noindent \lstinputlisting{../src/test_All.py}
+
+\newpage
+
+\section{Code for AALst\_new.py}
+
+\noindent \lstinputlisting{../src/AALst_new.py}
 
 \newpage
 
