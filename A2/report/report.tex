@@ -46,7 +46,9 @@ Advantages and disadvantages of the given design specification.
 \item The advantage of natual language is easier for the programmer to understand the flow of the program. Its faster to implement the correct methods with natual language instructions. However the solution generated is not general. Every designer can have different approach to the solution. The formal specification is more general. Writer is highly constrained by the logic, the proofsystem, and the fact that every detail must be verified.
 \item In the add\_stdnt function, there will be an exception of ValueError for the students with gpa out of the range. The information type can still be Named tuple.
 \item If two modules are similar, the similar functions can be put together for the programmer to use the same template of code. Then the difference can be stressed for modifying the template.
-
+\item In A2 the problem is divided into several modules, including Department Capacity Association List, Allocation Association List and Student Association List. They all use the types defined in StdntAllocTypes. If we want to work on the student information we just need to call the key of Named tuple, instead of searching for the location it is stored. And when modifying the information lists there are built-in method like remove and add. We don't need to know the actual inner structure of the dataset. However in A1, the information is simply stored in dictionary. We need the detail of the data structure when implementing other functions.
+\item There are specific operations in ADT. In this case there are next and end methods. It determines how the choices will be operated in the allocate function in advance. If it is a single list, we need to add operations on the list in the allocate function which will make it complicated.
+\item The members in enum are stored as interger which makes the program more efficient. And the value of members cannot be modified in outside operations so the data is stable. Macid is the label of the student. It is seperated so other functions can find the student more easily.
 \end{enumerate}
 
 \newpage
