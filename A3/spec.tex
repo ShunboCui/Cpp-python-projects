@@ -78,7 +78,7 @@ KING = 13
 
 \subsubsection* {Exported Types}
 
-SuitT = \{Heart, Diamond, Club, Spade\}\\ 
+SuitT = \{Heart, Diamond, Club, Spade\}\\
 RankT = [1..13]\\
 CategoryT = \{Tableau, Foundation, Deck, Waste\}\\
 CardT = tuple of (s: SuitT, r: RankT)
@@ -113,7 +113,7 @@ N/A
 
 \subsubsection* {Exported Types}
 
-\wss{What should be written here?}
+\wss{What should be written here?}Stack(T) = ?
 
 \subsubsection* {Exported Constants}
 
@@ -143,7 +143,7 @@ toSeq& & seq of T & \\
 
 \subsubsection* {State Variables}
 
-$S$: \wss{What is the type of the state variable?}
+$S$: \wss{What is the type of the state variable?}seq of T
 
 \subsubsection* {State Invariant}
 
@@ -181,7 +181,7 @@ new Stack($s$):
 
 \noindent pop():
 \begin{itemize}
-\item output: \wss{What should go here?}
+\item output: \wss{What should go here?}$S := S[0..|s| - 2]$
 
 \item exception: \wss{What should go here?}
 
@@ -197,7 +197,7 @@ new Stack($s$):
 
 \noindent size():
 \begin{itemize}
-\item output: \wss{What should go here?}
+\item output: \wss{What should go here?}$out := |s|$
 \item exception: None
 \end{itemize}
 
@@ -318,7 +318,7 @@ two\_decks($T$, $F$, $D$, $W$) \textit{\# each card appears twice in the combine
 
 \noindent GameBoard($\mathit{deck}$):
 \begin{itemize}
-\item transition: 
+\item transition:
 $$T, F, D, W := \text{tab\_deck}(\mathit{deck}[0..39]),
   \text{init\_seq}(8), \text{CardStackT}(\mathit{deck}[40..103]),
   \text{CardStackT}(\langle \rangle)$$
@@ -341,9 +341,9 @@ $c = \mbox{Tableau}$ & valid\_tab\_tab($n_0$,$n_1$) \\
 \hhline{|-|-|}
 $c = \mbox{Foundation}$ & valid\_tab\_foundation($n_0$,$n_1$) \\
 \hhline{|-|-|}
-$c = \mbox{Deck}$& \wss{What goes here?}\\
+$c = \mbox{Deck}$& \wss{What goes here?}valid\_tab\_deck($n_0$,$n_1$)\\
 \hhline{|-|-|}
-$c = \mbox{Waste}$ & \wss{What goes here?}\\
+$c = \mbox{Waste}$ & \wss{What goes here?}valid\_tab\_waste($n_0$,$n_1$)\\
 \hhline{|-|-|}
 \end{tabular}
 
@@ -374,9 +374,9 @@ $c = \mbox{Tableau}$ & valid\_waste\_tab($n$) \\
 \hhline{|-|-|}
 $c = \mbox{Foundation}$ & valid\_waste\_foundation($n$) \\
 \hhline{|-|-|}
-$c = \mbox{Deck}$& \wss{What goes here?}\\
+$c = \mbox{Deck}$& \wss{What goes here?}valid\_waste\_deck($n$)\\
 \hhline{|-|-|}
-$c = \mbox{Waste}$ & \wss{What goes here?}\\
+$c = \mbox{Waste}$ & \wss{What goes here?}valid\_waste\_waste($n$)\\
 \hhline{|-|-|}
 \end{tabular}
 
@@ -497,7 +497,7 @@ SeqCrdStckT = seq of CardStackT
 \subsection*{Local Functions}
 
 \noindent $\text{two\_decks} : \text{SeqCrdStckT} \times \text{SeqCrdStckT}
-\times \text{CardStackT} \times \text{CardStackT} \rightarrow \mathbb{N}$\\
+\times \text{CardStackT} \times \text{CardStackT} \rightarrow \mathbb{B}$\\
 \noindent
 $\text{two\_decks}(T, F, D, W) \equiv$ \wss{This function returns True if there
   is two of each card in the game}
