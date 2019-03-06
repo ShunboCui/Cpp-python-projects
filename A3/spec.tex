@@ -277,8 +277,8 @@ $W$: CardStackT \textit{\# Waste}\\
 
 \subsubsection* {State Invariant}
 
-$|T| = \wss{\text{What goes here?}}$$T$.size()\\
-$|F| = \wss{\text{What goes here?}}$$F$.size()\\
+$|T| = \wss{\text{What goes here?}}$10\\
+$|F| = \wss{\text{What goes here?}}$8\\
 cnt\_cards($T$, $F$, $D$, $W$, \wss{\text{What goes here?}}) = TOTAL\_CARDS\\
 two\_decks($T$, $F$, $D$, $W$) \textit{\# each card appears twice in the combined deck}
 
@@ -398,7 +398,7 @@ $c = \mbox{Waste}$ & \wss{What goes here?}False\\
 \noindent is\_valid\_deck\_mv():
 \begin{itemize}
 \item output: \wss{What goes here?  The deck moves involves moving a card from
-    the deck stack to the waste stack.}
+    the deck stack to the waste stack.}$D.size() > 0$
 \item exception: None
 \end{itemize}
 
@@ -485,7 +485,7 @@ $c = \mbox{Foundation}$ & W, F[$n$] := \wss{What goes here?}W.pop(),F[$n$].push(
 
 \noindent is\_win\_state():
 \begin{itemize}
-\item output: \wss{What goes here?}
+\item output: \wss{What goes here?}$\text{cnt\_cards}(T, F, D, W, f) \equiv 104$
 \item exception: None
 
 \end{itemize}
@@ -513,6 +513,7 @@ $$(\forall \mathit{st}: \text{SuitT}, \mathit{rk}:
 \noindent $\text{cnt\_cards\_stack}: \text{CardStackT} \times (\text{CardT}
 \rightarrow \mathbb{B}) \rightarrow \mathbb{N}$\\
 \noindent \wss{What goes here?}\\
+\noindent $\text{cnt\_cards\_stack}(s, f) \equiv (s.size())$\\
 
 \noindent $\text{cnt\_cards}: \text{SeqCrdStckT} \times \text{SeqCrdStckT}
 \times \text{CardStackT} \times \text{CardStackT} \times (\text{CardT}
@@ -586,9 +587,11 @@ F[$n$].size() = 0 & W.top().r = ACE\\
 \hhline{|-|-|}
 \end{tabular}\\\\
 
-\noindent tab\_placeable: \wss{Complete this specification}\\
+\noindent tab\_placeable: \wss{Complete this specification}$CardT \times CardT \rightarrow \mathbb{B}$\\
+\noindent tab\_placeable($n_0, n_1$) $\equiv$ $(n_0.top().s \equiv n_1.top().s \land n_0.top().r < n_1.top().r)$
 
-\noindent foundation\_placeable: \wss{Complete this specification}
+\noindent foundation\_placeable: \wss{Complete this specification}$CardT \times CardT \rightarrow \mathbb{B}$\\
+\noindent tab\_placeable($n_0, n_1$) $\equiv$ $(n_0.top().s \equiv n_1.top().s \land n_0.top().r > n_1.top().r)$
 
 \newpage
 
