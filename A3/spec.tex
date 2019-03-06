@@ -181,17 +181,17 @@ new Stack($s$):
 
 \noindent pop():
 \begin{itemize}
-\item output: \wss{What should go here?}$S := S[0..|s| - 2]$
+\item output: \wss{What should go here?}$out := \text{new Stack}(S[0..|s| - 2])$
 
-\item exception: \wss{What should go here?}
+\item exception: \wss{What should go here?}$exc := (\neg (|s| > 0)) \Rightarrow out\_of\_range)$
 
 \end{itemize}
 
 \noindent top():
 \begin{itemize}
-\item output: $\mathit{out} := S[|S| - 1]$
+\item output: $\mathit{out} := S[|s| - 1]$
 
-\item exception: \wss{What should go here?}
+\item exception: \wss{What should go here?}$exc := (\neg (|s| > 0)) \Rightarrow out\_of\_range)$
 
 \end{itemize}
 
@@ -214,7 +214,7 @@ new Stack($s$):
 
 \subsection* {Template Module}
 
-CardStackT is \wss{What should go here?}
+CardStackT is \wss{What should go here?}Stack(CardT)
 
 \newpage
 
@@ -277,8 +277,8 @@ $W$: CardStackT \textit{\# Waste}\\
 
 \subsubsection* {State Invariant}
 
-$|T| = \wss{\text{What goes here?}}$\\
-$|F| = \wss{\text{What goes here?}}$\\
+$|T| = \wss{\text{What goes here?}}$$T$.size()\\
+$|F| = \wss{\text{What goes here?}}$$F$.size()\\
 cnt\_cards($T$, $F$, $D$, $W$, \wss{\text{What goes here?}}) = TOTAL\_CARDS\\
 two\_decks($T$, $F$, $D$, $W$) \textit{\# each card appears twice in the combined deck}
 
@@ -341,9 +341,9 @@ $c = \mbox{Tableau}$ & valid\_tab\_tab($n_0$,$n_1$) \\
 \hhline{|-|-|}
 $c = \mbox{Foundation}$ & valid\_tab\_foundation($n_0$,$n_1$) \\
 \hhline{|-|-|}
-$c = \mbox{Deck}$& \wss{What goes here?}valid\_tab\_deck($n_0$,$n_1$)\\
+$c = \mbox{Deck}$& \wss{What goes here?}False\\
 \hhline{|-|-|}
-$c = \mbox{Waste}$ & \wss{What goes here?}valid\_tab\_waste($n_0$,$n_1$)\\
+$c = \mbox{Waste}$ & \wss{What goes here?}False\\
 \hhline{|-|-|}
 \end{tabular}
 
@@ -374,9 +374,9 @@ $c = \mbox{Tableau}$ & valid\_waste\_tab($n$) \\
 \hhline{|-|-|}
 $c = \mbox{Foundation}$ & valid\_waste\_foundation($n$) \\
 \hhline{|-|-|}
-$c = \mbox{Deck}$& \wss{What goes here?}valid\_waste\_deck($n$)\\
+$c = \mbox{Deck}$& \wss{What goes here?}False\\
 \hhline{|-|-|}
-$c = \mbox{Waste}$ & \wss{What goes here?}valid\_waste\_waste($n$)\\
+$c = \mbox{Waste}$ & \wss{What goes here?}False\\
 \hhline{|-|-|}
 \end{tabular}
 
@@ -408,9 +408,9 @@ $c = \mbox{Waste}$ & \wss{What goes here?}valid\_waste\_waste($n$)\\
 
 \begin{tabular}{|p{3cm}|l|}
 \hhline{|-|-|}
-$c = \mbox{Tableau}$ & T[$n_0$], T[$n_1$] := \wss{What goes here?}\\
+$c = \mbox{Tableau}$ & T[$n_0$], T[$n_1$] := \wss{What goes here?}T[$n_0$].pop(),T[$n_1$].push(T[$n_0$].top())\\
 \hhline{|-|-|}
-$c = \mbox{Foundation}$ & T[$n_0$], F[$n_1$] := \wss{What goes here?}\\
+$c = \mbox{Foundation}$ & T[$n_0$], F[$n_1$] := \wss{What goes here?}T[$n_0$].pop(),F[$n_1$].push(T[$n_0$].top())\\
 \hhline{|-|-|}
 \end{tabular}
 
@@ -425,9 +425,9 @@ $c = \mbox{Foundation}$ & T[$n_0$], F[$n_1$] := \wss{What goes here?}\\
 
 \begin{tabular}{|p{3cm}|l|}
 \hhline{|-|-|}
-$c = \mbox{Tableau}$ & W, T[$n$] := \wss{What goes here?}\\
+$c = \mbox{Tableau}$ & W, T[$n$] := \wss{What goes here?}W.pop(),T[$n$].push(W.top())\\
 \hhline{|-|-|}
-$c = \mbox{Foundation}$ & W, F[$n$] := \wss{What goes here?}\\
+$c = \mbox{Foundation}$ & W, F[$n$] := \wss{What goes here?}W.pop(),F[$n$].push(W.top())\\
 \hhline{|-|-|}
 \end{tabular}
 
@@ -439,7 +439,7 @@ $c = \mbox{Foundation}$ & W, F[$n$] := \wss{What goes here?}\\
 
 \noindent deck\_mv():
 \begin{itemize}
-\item transition: D, W := \wss{What goes here?}
+\item transition: D, W := \wss{What goes here?}D.pop(),W.push(D.top())
 \item exception:
   $exc := (\neg \text{is\_valid\_deck\_mv}() \Rightarrow \text{invalid\_argument})$
 \end{itemize}
@@ -539,19 +539,30 @@ $(\forall i: \mathbb{N} | i \in [0..9] : T[i].\text{toSeq}() =
 
 \begin{tabular}{|p{4cm}|p{3.5cm}|l|}
 \hhline{|-|-|-|}
-$T[n_0].\text{size}() > 0$ & T[$n_1$].size() $>$ 0 & \wss{What goes here?}\\
+$T[n_0].\text{size}() > 0$ & T[$n_1$].size() $>$ 0 & \wss{What goes here?}tab\_placeable(T[$n_0$].top(), T[$n_1$].top())\\
 \hhline{|~|-|-|}
- & T[$n_1$].size() = 0 & \wss{What goes here?}\\
+ & T[$n_1$].size() = 0 & \wss{What goes here?}True\\
 \hhline{|-|-|-|}
-T[$n_0$].size() = 0 & T[$n_1$].size() $>$ 0 & \wss{What goes here?}\\
+T[$n_0$].size() = 0 & T[$n_1$].size() $>$ 0 & \wss{What goes here?}False\\
 \hhline{|~|-|-|}
-& T[$n_1$].size() $=$ 0 & \wss{What goes here?}\\
+& T[$n_1$].size() $=$ 0 & \wss{What goes here?}False\\
 \hhline{|-|-|-|}
 \end{tabular}\\\\
 
 \noindent valid\_tab\_foundation: $\mathbb{N} \times \mathbb{N} \rightarrow \mathbb{B}$\\
 \noindent valid\_tab\_foundation($n_0, n_1$) $\equiv$ \wss{What goes here?  You
   may need a table?}\\
+  \begin{tabular}{|p{4cm}|p{3.5cm}|l|}
+  \hhline{|-|-|-|}
+  $T[n_0].\text{size}() > 0$ & F[$n_1$].size() $>$ 0 & tab\_placeable(T[$n_0$].top(), F[$n_1$].top())\\
+  \hhline{|~|-|-|}
+   & F[$n_1$].size() = 0 & True\\
+  \hhline{|-|-|-|}
+  T[$n_0$].size() = 0 & F[$n_1$].size() $>$ 0 & False\\
+  \hhline{|~|-|-|}
+  & F[$n_1$].size() $=$ 0 & False\\
+  \hhline{|-|-|-|}
+  \end{tabular}\\\\
 
 \noindent valid\_waste\_tab: $\mathbb{N} \rightarrow \mathbb{B}$\\
 \noindent valid\_waste\_tab ($n$) $\equiv$
