@@ -31,4 +31,13 @@ typedef unsigned short int RankT;
  */
 #define KING   13
 
+enum SuitT {N, S, E, W};
+enum CategoryT {Tableau, Foundation, Deck, Wasteg};
+
+typedef struct
+{
+SuitT s;
+RankT r;
+}CardT;
+
 #endif
