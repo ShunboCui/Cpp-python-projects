@@ -1,4 +1,4 @@
-/**
+﻿/**
  * \file CardTypes.h
  * \author
  * \brief
@@ -31,8 +31,10 @@ typedef unsigned short int RankT;
  */
 #define KING   13
 
+#define TOTAL_CARDS   104
+
 enum SuitT {N, S, E, W};
-enum CategoryT {Tableau, Foundation, Deck, Wasteg};
+enum CategoryT {Tableau, Foundation, Deck, Waste};
 
 typedef struct
 {

@@ -1,4 +1,4 @@
-#ifndef A3_STACK_H_
+﻿#ifndef A3_STACK_H_
 #define A3_STACK_H_
 
 #include <vector>
@@ -9,8 +9,9 @@ class Stack
     private:
         std::vector<T> s;
     public:
+		Stack();
         Stack(std::vector<T> s);
-        Stack<T> push(T);
+        Stack<T> push(T t);
         Stack<T> pop();
         T top();
         unsigned int size();
