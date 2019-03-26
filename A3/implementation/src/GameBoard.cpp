@@ -4,9 +4,12 @@
 #include "Stack.h"
 
 #include <vector>
+#include <iostream>
+#include <algorithm>
+#include <stdexcept>
 
 using std::vector;
-
+/*
 BoardT::BoardT(vector<CardT> deck){
 	vector<CardT> empty;
 	vector<CardT> temp;
@@ -22,12 +25,28 @@ BoardT::BoardT(vector<CardT> deck){
 	this->D = CardStackT(temp2);
 	this->W = CardStackT(empty);
 }
+*/
+BoardT::BoardT(vector<CardT> deck) : T(tab_deck(vector<CardT>(deck.begin(), deck.begin() + 40))), F(init_seq(8))
+, D(CardStackT(vector<CardT>(deck.begin() + 40, deck.begin() + 104)))
+, W(CardStackT(vector<CardT>())) {
+
+	if (!(two_decks(deck))) {
+		throw std::invalid_argument("Incorrect card deck");
+	}
+
+}
 
 bool BoardT::is_valid_tab_mv(CategoryT c, unsigned int n0, unsigned int n1) {
 	if (c == Tableau) {
+		if (is_valid_pos(Tableau, n0) == false || is_valid_pos(Tableau, n1) == false) {
+			throw std::out_of_range("Invalid pos");
+		}
 		return valid_tab_tab(n0, n1);
 	}
 	if (c == Foundation) {
+		if (is_valid_pos(Tableau, n0) == false || is_valid_pos(Foundation, n1) == false) {
+			throw std::out_of_range("Invalid pos");
+		}
 		return valid_tab_foundation(n0, n1);
 	}
 	if (c == Deck) {
@@ -39,10 +58,21 @@ bool BoardT::is_valid_tab_mv(CategoryT c, unsigned int n0, unsigned int n1) {
 }
 
 bool BoardT::is_valid_waste_mv(CategoryT c, unsigned int n) {
+	if (W.size() == 0) {
+		//std::cout << "thrown" << std::endl;
+		throw std::invalid_argument("Waste is empty");
+	}
+
 	if (c == Tableau) {
+		if (is_valid_pos(Tableau, n) == false) {
+			throw std::out_of_range("Invalid pos");
+		}
 		return valid_waste_tab(n);
 	}
 	if (c == Foundation) {
+		if (is_valid_pos(Foundation, n) == false) {
+			throw std::out_of_range("Invalid pos");
+		}
 		return valid_waste_foundation(n);
 	}
 	if (c == Deck) {
@@ -58,6 +88,9 @@ bool BoardT::is_valid_deck_mv() {
 }
 
 void BoardT::tab_mv(CategoryT c, unsigned int n0, unsigned int n1) {
+	if (is_valid_tab_mv(c, n0, n1) == false) {
+		throw std::invalid_argument("Invalid move");
+	}
 	if (c == Tableau) {
 		T[n1] = T[n1].push(T[n1].top());
 		T[n0] = T[n0].pop();
@@ -69,6 +102,9 @@ void BoardT::tab_mv(CategoryT c, unsigned int n0, unsigned int n1) {
 }
 
 void BoardT::waste_mv(CategoryT c, unsigned int n) {
+	if (is_valid_waste_mv(c, n) == false) {
+		throw std::invalid_argument("Invalid move");
+	}
 	if (c == Tableau) {
 		T[n] = T[n].push(W.top());
 		W = W.pop();
@@ -80,15 +116,24 @@ void BoardT::waste_mv(CategoryT c, unsigned int n) {
 }
 
 void BoardT::deck_mv() {
+	if (is_valid_deck_mv() == false) {
+		throw std::invalid_argument("Invalid mv");
+	}
 	W = W.push(D.top());
 	D = D.pop();
 }
 
 CardStackT BoardT::get_tab(unsigned int i){
+	if (is_valid_pos(Tableau, i) == 0) {
+		throw std::out_of_range("Invalid pos");
+	}
 	return T[i];
 }
 
 CardStackT BoardT::get_foundation(unsigned int i) {
+	if (is_valid_pos(Foundation, i) == 0) {
+		throw std::out_of_range("Invalid pos");
+	}
 	return F[i];
 }
 
@@ -120,7 +165,11 @@ bool BoardT::valid_mv_exists() {
 }
 
 bool BoardT::is_win_state() {
+
 	for (int i = 0; i < 8; i++) {
+		if (!(F[i].size() > 0)) {
+			return false;
+		}
 		if (F[i].top().r != KING) {
 			return false;
 		}
@@ -129,6 +178,38 @@ bool BoardT::is_win_state() {
 }
 
 //Local
+
+bool BoardT::two_decks(vector<CardT> deck) {
+	vector<vector<short int>> newvector(4, vector<short int>(13, 0));
+	for (short int i = 0; i < deck.size(); i++) {
+		
+		if (deck[i].s == N) {
+			newvector[0][deck[i].r-1]++;
+		}
+		if (deck[i].s == S) {
+			newvector[1][deck[i].r-1]++;
+		}
+		if (deck[i].s == E) {
+			newvector[2][deck[i].r-1]++;
+		}
+		if (deck[i].s == SuitT::W) {
+			newvector[3][deck[i].r-1]++;
+		}
+		
+	}
+	
+	for (int j = 0; j < 4; j++) {
+		for (int k = 0; k < 13; k++) {
+			if (!(newvector[j][k] == 2)) {
+				std::cout << "found" << std::endl;
+				return false;
+			}
+			
+		}
+	}
+	return true;
+}
+
 vector<Stack<CardT>> BoardT::tab_deck(vector<CardT> deck) {
 	SeqCrdStckT T;
 	for (int i = 0; i < 10; i++) {

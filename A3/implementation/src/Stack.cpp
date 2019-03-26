@@ -1,16 +1,14 @@
 ﻿// Implementation here
 #include "Stack.h"
 #include "CardTypes.h"
+
 #include <algorithm>
 #include <iostream>
 #include <vector>
+#include <stdexcept>
 
 using std::vector;
 
-template <class T>
-Stack<T>::Stack() {
-
-}
 
 template <class T>
 Stack<T>::Stack(vector<T> s){
@@ -26,6 +24,9 @@ Stack<T> Stack<T>::push(T t){
 
 template <class T>
 Stack<T> Stack<T>::pop(){
+	if (s.size() == 0) {
+		throw std::out_of_range("Stack is empty");
+	}
 	s.pop_back();
 	Stack newstack(s);
     return newstack;
@@ -33,7 +34,10 @@ Stack<T> Stack<T>::pop(){
 
 template <class T>
 T Stack<T>::top(){
-    return s[s.size() - 1];
+	if (s.size() == 0) {
+		throw std::out_of_range("Stack is empty");
+	}
+    return s.back();
 }
 
 

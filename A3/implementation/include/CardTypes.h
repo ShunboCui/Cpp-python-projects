@@ -31,11 +31,24 @@ typedef unsigned short int RankT;
  */
 #define KING   13
 
+ /**
+  * \brief Total number of all cards.
+  */
 #define TOTAL_CARDS   104
 
+  /**
+   * \brief The suit of cards.
+   */
 enum SuitT {N, S, E, W};
+
+/**
+ * \brief Four card containers on the gameboard.
+ */
 enum CategoryT {Tableau, Foundation, Deck, Waste};
 
+/**
+ * \brief The two properties of every eard.
+ */
 typedef struct
 {
 SuitT s;

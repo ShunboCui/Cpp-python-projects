@@ -26,9 +26,11 @@ class BoardT
 		bool tab_placeable(CardT c, CardT d);
 		bool foundation_placeable(CardT c, CardT d);
 		bool is_valid_pos(CategoryT c, unsigned int n);
+		bool two_decks(vector<CardT> deck);
 
 	public:
 		BoardT(vector<CardT> deck);
+
 		bool is_valid_tab_mv(CategoryT c, unsigned int n0, unsigned int n1);
 		bool is_valid_waste_mv(CategoryT c, unsigned int n);
 		bool is_valid_deck_mv();
