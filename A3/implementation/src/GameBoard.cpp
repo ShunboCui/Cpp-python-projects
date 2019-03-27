@@ -121,6 +121,7 @@ void BoardT::deck_mv() {
 	}
 	W = W.push(D.top());
 	D = D.pop();
+
 }
 
 CardStackT BoardT::get_tab(unsigned int i){

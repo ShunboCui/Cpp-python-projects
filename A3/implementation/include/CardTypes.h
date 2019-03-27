@@ -1,7 +1,7 @@
 ﻿/**
  * \file CardTypes.h
- * \author
- * \brief
+ * \author Shunbo Cui
+ * \brief Defines every types needed in the project
  */
 #ifndef A3_CARD_TYPES_H_
 #define A3_CARD_TYPES_H_

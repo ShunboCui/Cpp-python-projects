@@ -1,4 +1,9 @@
-﻿#ifndef A3_CARD_STACK_H_
+﻿/**
+ * \file CardStack.h
+ * \author Shunbo Cui
+ * \brief Defines CardStack
+ */
+#ifndef A3_CARD_STACK_H_
 #define A3_CARD_STACK_H_
 #include "Stack.h"
 #include "CardTypes.h"

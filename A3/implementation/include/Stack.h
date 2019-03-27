@@ -1,4 +1,9 @@
-﻿#ifndef A3_STACK_H_
+﻿/**
+ * \file Stack.h
+ * \author Shunbo Cui
+ * \brief Defines method needed for Stack type.
+ */
+#ifndef A3_STACK_H_
 #define A3_STACK_H_
 
 #include <vector>
