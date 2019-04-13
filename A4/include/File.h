@@ -9,10 +9,12 @@ class File {
 		vector<vector<int>> total;
 		vector<string> split(string str, char delimiter);
 		int count(int row, int col);
+		void write();
 	public:
 		File(string filename);
+		void next();
+		void show();
 
-		void write();
 		int get(int row, int col);
 };
 #endif
