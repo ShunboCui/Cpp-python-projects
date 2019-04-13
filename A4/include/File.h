@@ -6,15 +6,11 @@ using namespace std;
 
 class File {
 	private:
-		vector<vector<int>> total;
+		string filename;
 		vector<string> split(string str, char delimiter);
-		int count(int row, int col);
-		void write();
 	public:
 		File(string filename);
-		void next();
-		void show();
-
-		int get(int row, int col);
+		vector<vector<int>> read();
+		void write(vector<vector<int>> total);
 };
 #endif
