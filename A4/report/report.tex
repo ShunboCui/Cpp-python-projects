@@ -158,7 +158,7 @@ None
 \hline
 \textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
 \hline
-display & seq of (seq of $\mathbb{Z}$) & ~ & ~\\
+display & seq of (seq of $\mathbb{Z}$) & ~ & $exc := (total[i][j] != 0 \land total[i][j] != 1 \Rightarrow {\rm invalid\_argument})$\\
 \hline
 \end{tabular}
 
@@ -252,14 +252,14 @@ access routine is called on that instance. Once a Board has been created, the co
 \noindent Board($total$):
 \begin{itemize}
 \item transition: $total := total$
-\item exception: none
+\item exception: $exc := (\forall i: 0 \leq i < total.size()|total.size() < 3 \lor total[i].size() < 3 \Rightarrow {\rm invalid\_argument})$
 \end{itemize}
 
 \noindent get($row, col$):
 \begin{itemize}
 \item output:
 $out := total[row][col]$
-\item exception: none
+\item exception: $exc := ((row< 0 \lor row  \geq total.size())\land (col<0 \lor row\geq total[row].size()) \Rightarrow {\rm invalid\_argument})$
 \end{itemize}
 
 \noindent next():
@@ -302,6 +302,17 @@ total[$i$][$j$] = 0 & $count(i, j) > 3$ & total[$i$][$j$] := 0 \\
 
 \noindent count: $ \mathbb{Z} \times \mathbb{Z} \rightarrow \mathbb{Z}$\\
 \noindent count ($row, col$) $= sum$ such that ($sum = total[row-1][col-1] + total[row-1][col] + total[row-1][col+1] + total[row][col-1] + total[row][col+1] + total[row+1][col-1] + total[row+1][col] + total[row+1][col+1])$\\
+
+\newpage
+
+\section* {Critique}
+In this assignment three modules are implemented to simulate the game state of Game Of Life.\\
+The three modules are strongly related as the requirement of consistency. The File module mainly gets the data from an input file and convert the data from string to integer in order to simplify the operations. It also write the current state of the gameboard to the file to save the state, and a new game can be started from the file.\\
+The GameBoard module provides main method of the game. It takes the input from the File module and initialize the game board. It can also calculate for the next state.\\
+At any state in the game, Display module can be used to show every cell in the game board to the console. Every module and method is essential and cohesive for the requirements. \\
+The modules are general as it can take different files as input. It accepts any size of game board determined by the input file, as long as it is bigger than 3*3. \\For detailed statement functions such as counting for neighbours, many different conditions need to be considered.  General expressions are applied to minimize the size of function.\\
+The state variable cannot be accessed outside of the classes to hide the information.
+
 
 
 \end{document}
