@@ -10,7 +10,7 @@ class Board {
 	public:
 		Board(vector<vector<int>> total);
 		void next();
-		void show();
+		//void show();
 		int get(int row, int col);
 		vector<vector<int>> toSeq();
 };
